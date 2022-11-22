@@ -10,13 +10,14 @@ public abstract class Car {
     protected String color;
     protected Integer maxSpeed;
     protected float engineVolume;
+    private ArrayList<Sponsor> carSponsors =new ArrayList<Sponsor>();
 
 
 
 
 
 
-    public Car(String brand, String model, int year, String country, String color, Integer maxSpeed,float engineVolume) {
+    public Car(String brand, String model, int year, String country, String color, Integer maxSpeed, float engineVolume) {
         if (model == null || model.isEmpty()) {
             this.model = "default";
         } else {
@@ -111,8 +112,25 @@ public abstract class Car {
                 '}';
     }
 
+    public void addSponsor(Sponsor...sponsor) {
+        for (int i = 0; i < sponsor.length; i++) {
+          carSponsors.add(sponsor[i]);
+        }
 
+    }
 
+    public ArrayList<Sponsor> getSponsors() {
+        return carSponsors;
+    }
 
-
+    public void getSponsorName(){
+        System.out.println("У автомобиля " + getBrand() + " " + getModel() + " следующие спонсоры:");
+        for (Sponsor sponsor : getSponsors()) {
+            System.out.println(sponsor.getName());
+        }
+    }
 }
+
+
+
+

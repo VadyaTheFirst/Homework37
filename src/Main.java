@@ -8,12 +8,12 @@ import Mechanic.Mechanics;
 import Mechanic.Pitstation;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class Main {
     private static ArrayList<Car> cars;
-    private static ArrayList<Sponsor> sponsors;
+    private  ArrayList<Sponsor> sponsors;
     private static ArrayList<Mechanics> mechanics;
     public static void main(String[] args) {
 
@@ -56,7 +56,7 @@ public class Main {
         CarLicenseC licenseC = new CarLicenseC(driverC);
         licenseC.drives(carC);
 
-        cars = new ArrayList<>(7);
+        cars = new ArrayList<Car>(7);
         cars.add(car0);
         cars.add(car1);
         cars.add(car2);
@@ -73,9 +73,10 @@ public class Main {
         Sponsor sponsor2 = new Sponsor(true,51000,"Алкашня Инкорпорейтд");
         sponsor2.supportCar(cars.get(1),cars.get(4));
 
-        sponsors = new ArrayList<>(5);
-        sponsors.add(sponsor1);
-       sponsors.add(sponsor2);
+        //sponsors = new ArrayList<Sponsor>(5);
+       // sponsors.add(sponsor1);
+       //sponsors.add(sponsor2);
+       List<Sponsor> sponsors =List.of(sponsor1,sponsor2);
 
         Mechanics mechanic1= new Mechanics("Вася","ХЗ");
         Mechanics mechanic2= new Mechanics("Петя","Рога и Копыта");
@@ -86,12 +87,15 @@ public class Main {
         mechanics.add(mechanic1);
         mechanics.add(mechanic2);
 
-
         Pitstation<TakeTechInspection> pit1= new Pitstation<>();
         pit1.addCar(car0);
         pit1.addCar(car5);
         pit1.addCar(car2);
         pit1.technicalInspetion();
+
+        car1.addSponsor(sponsors.get(0),sponsors.get(1));
+        car1.getSponsorName();
+        // car1.addSponsor(sponsor2);
 
 
 

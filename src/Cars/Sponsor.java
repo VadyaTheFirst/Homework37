@@ -31,4 +31,13 @@ public class Sponsor {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "Sponsor{" +
+                "isCompany=" + isCompany +
+                ", sum=" + sum +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
