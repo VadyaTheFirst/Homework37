@@ -1,6 +1,7 @@
 package Cars;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class Car {
     protected final String brand;
@@ -11,6 +12,8 @@ public abstract class Car {
     protected Integer maxSpeed;
     protected float engineVolume;
     private ArrayList<Sponsor> carSponsors =new ArrayList<Sponsor>();
+
+    //Почему не выходит как у Бизина?!
 
 
 
@@ -112,9 +115,8 @@ public abstract class Car {
                 '}';
     }
 
-    public void addSponsor(Sponsor...sponsor) {
-        for (int i = 0; i < sponsor.length; i++) {
-          carSponsors.add(sponsor[i]);
+    public void addSponsor(Sponsor...sponsor) {for (int i = 0; i < sponsor.length; i++) {
+         carSponsors.add(sponsor[i]);
         }
 
     }
@@ -125,11 +127,12 @@ public abstract class Car {
 
     public void getSponsorName(){
         System.out.println("У автомобиля " + getBrand() + " " + getModel() + " следующие спонсоры:");
-        for (Sponsor sponsor : getSponsors()) {
-            System.out.println(sponsor.getName());
-        }
+        //for (Sponsor sponsor : getSponsors()) {
+           // System.out.println(sponsor.getName());
+        System.out.println(Arrays.toString(carSponsors.toArray()));
     }
-}
+    }
+
 
 
 
