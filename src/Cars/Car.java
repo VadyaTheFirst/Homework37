@@ -1,0 +1,139 @@
+package Cars;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public abstract class Car {
+    protected final String brand;
+    protected final String model;
+    protected final int year;
+    protected final String country;
+    protected String color;
+    protected Integer maxSpeed;
+    protected float engineVolume;
+    private ArrayList<Sponsor> carSponsors =new ArrayList<Sponsor>();
+
+    //Почему не выходит как у Бизина?!
+
+
+
+
+
+
+    public Car(String brand, String model, int year, String country, String color, Integer maxSpeed, float engineVolume) {
+        if (model == null || model.isEmpty()) {
+            this.model = "default";
+        } else {
+            this.model = model;
+        }
+        this.brand = brand;
+
+        if (year <= 0) {
+            this.year = 2000;
+        } else {
+            this.year = year;
+        }
+
+        if (color == null || color == "") {
+            this.color = "Белый";
+        } else {
+            this.color = color;
+        }
+        this.country = country;
+        this.maxSpeed = maxSpeed;
+        this.engineVolume=engineVolume;
+
+
+    }
+
+
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+
+
+
+    public void setColor(String color) {
+        if (!color.isEmpty() || color == null) {
+            this.color = "Red";
+        } else {
+            this.color = color;
+        }
+    }
+
+    public void setMaxSpeed (Integer maxSpeed){
+        if (maxSpeed <= 0) {
+            maxSpeed = 100;
+        } else {
+            this.maxSpeed = maxSpeed;
+        }
+    }
+
+
+    public float getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(float engineVolume) {
+        this.engineVolume = engineVolume;
+    }
+
+    public void startToMove(){};
+    public void stopMoveing(){};
+
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", country='" + country + '\'' +
+                ", color='" + color + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", engineVolume=" + engineVolume +
+                '}';
+    }
+
+    public void addSponsor(Sponsor...sponsor) {for (int i = 0; i < sponsor.length; i++) {
+         carSponsors.add(sponsor[i]);
+        }
+
+    }
+
+    public ArrayList<Sponsor> getSponsors() {
+        return carSponsors;
+    }
+
+    public void getSponsorName(){
+        System.out.println("У автомобиля " + getBrand() + " " + getModel() + " следующие спонсоры:");
+        //for (Sponsor sponsor : getSponsors()) {
+           // System.out.println(sponsor.getName());
+        System.out.println(Arrays.toString(carSponsors.toArray()));
+    }
+    }
+
+
+
+
+
